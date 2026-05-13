@@ -53,14 +53,12 @@
             margin: 0;
         }
 
-        /* contenedor principal */
         .app {
             max-width: 1400px;
             margin: 0 auto;
             padding: 1.2rem 1.5rem 3rem;
         }
 
-        /* header con logo flexible */
         .header {
             display: flex;
             flex-wrap: wrap;
@@ -79,7 +77,6 @@
             flex-shrink: 0;
         }
 
-        /* Logo PNG - NO SE DEFORMA */
         .company-logo {
             height: 48px;
             width: auto;
@@ -105,7 +102,6 @@
             margin-top: 4px;
         }
 
-        /* toggle tema claro/oscuro */
         .theme-switch {
             display: flex;
             align-items: center;
@@ -151,7 +147,6 @@
             background: #e5e5ea;
         }
 
-        /* grilla responsiva */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -159,7 +154,6 @@
             margin-top: 1rem;
         }
 
-        /* tarjetas */
         .product-card {
             background: var(--card-bg);
             backdrop-filter: blur(8px);
@@ -181,11 +175,14 @@
         }
 
         .image-container {
-            background: rgba(0, 0, 0, 0.02);
+            background: rgba(0, 0, 0, 0.04);
             position: relative;
             width: 100%;
             padding-top: 100%;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-img {
@@ -194,12 +191,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;  /* 🔥 MAGIA: muestra la imagen COMPLETA sin recortar */
             transition: transform 0.5s ease;
+            background: var(--bg-secondary);
+            padding: 8px;
         }
 
         .product-card:hover .product-img {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         .product-info {
@@ -207,7 +206,7 @@
         }
 
         .product-title {
-            font-size: 1.35rem;
+            font-size: 1.2rem;
             font-weight: 600;
             letter-spacing: -0.3px;
             margin-bottom: 0.5rem;
@@ -216,7 +215,7 @@
         }
 
         .product-sub {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--accent);
             font-weight: 500;
             display: inline-block;
@@ -250,7 +249,6 @@
             padding-top: 1.8rem;
         }
 
-        /* responsive móvil */
         @media (max-width: 640px) {
             .app {
                 padding: 1rem 1rem 2rem;
@@ -263,13 +261,16 @@
                 padding: 0.9rem 0.9rem 1.2rem;
             }
             .product-title {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .company-logo {
                 height: 35px;
             }
             .logo-text {
                 font-size: 1.2rem;
+            }
+            .product-img {
+                padding: 4px;
             }
         }
 
@@ -292,7 +293,6 @@
 <div class="app">
     <div class="header">
         <div class="logo-area">
-            <!-- CAMBIA 'ruta/de/tu/logo.png' por la ruta real de tu logo PNG -->
             <img class="company-logo" src="logo.png" alt="Logo empresa" id="companyLogoImg">
             <div>
                 <div class="logo-text">VisiónAR</div>
@@ -314,115 +314,106 @@
 </div>
 
 <script>
-    // ==============================================================
-    // 📦 ZONA DE PRODUCTOS - AÑADE MÁS COPIANDO ESTE FORMATO
-    // ==============================================================
-    // Para agregar un producto nuevo, COPIA una de las líneas entre { } 
-    // y PEGALA dentro del arreglo productsData, separando con coma.
-    // ==============================================================
-    
     let productsData = [
-        // EJEMPLO 1 - COPIA ESTE BLOQUE PARA NUEVOS PRODUCTOS:
         {
             id: 1,
-            title: "MARRIOTT SNACK CART",       // <-- TÍTULO DEL PRODUCTO
-            subtitle: "Colección digital", // <-- SUBTÍTULO
-            imgSrc: "Captura de pantalla 2026-05-11 121833.png",  // <-- URL DE IMAGEN
-            arLink: "https://mywebar.com/p/Project_1_ng9db447v1",  // <-- LINK PARA EXPERIENCIA AR
-            badge: "Try AR"                       // <-- TEXTO DE LA ETIQUETA
+            title: "MARRIOTT SNACK CART",
+            subtitle: "Colección digital 2026",
+            imgSrc: "Captura de pantalla 2026-05-11 121833.png",
+            arLink: "https://webxr.run/Np6YymrXmevvd",
+            badge: "TvA"
         },
-        // EJEMPLO 2
         {
             id: 2,
             title: "3 CEREAL DISPENSER METAL-WOOD",
-            subtitle: "Colección digital",
+            subtitle: "Colección digital 2026",
             imgSrc: "Captura de pantalla 2026-05-11 123338.png",
-            arLink: "https://mywebar.com/p/Project_2_f9nhd6wqnm",
-            badge: "Try AR"
+            arLink: "https://webxr.run/xaoXbVG59eQk",
+            badge: "TvA"
         },
-        // EJEMPLO 3
         {
             id: 3,
             title: "GALLON CURVE ROUND",
-            subtitle: "Colección digital",
+            subtitle: "Colección digital 2026",
             imgSrc: "Captura de pantalla 2026-05-11 123032.png",
-            arLink: "https://mywebar.com/p/Project_3_xm8dp7jrwk",
-            badge: "Try AR"
+            arLink: "https://webxr.run/zaMp2D9Y8AQaw",
+            badge: "TvA"
         },
         {
             id: 4,
-            title: "HERITAGE CUP OR LID ORGANIZER",
-            subtitle: "Colección digital",
-            imgSrc: "Captura de pantalla 2026-05-12 102920.png",
-            arLink: "https://mywebar.com/p/Project_3_5hytfxkz49",
-            badge: "Try AR"
+            title: "Vista Single Cup & Lid Organizer-Mocha",
+            subtitle: "Colección digital 2026",
+            imgSrc: "298-140-600x450.jpg",
+            arLink: "https://webxr.run/MpY9vOM77Y08p",
+            badge: "TvA"
         },
         {
             id: 5,
-            title: "VISTA RECTANGULAR RISERS",
-            subtitle: "Colección digital",
-            imgSrc: "Captura de pantalla 2026-05-12 115320.png",
-            arLink: "https://mywebar.com/p/Project_5_tnl40z1ioa",
-            badge: "Try AR"
-        },
-         {
-            id: 6,
-            title: "VISTA SQUARE RISERS",
-            subtitle: "Colección digital",
-            imgSrc: "Captura de pantalla 2026-05-12 120437.png",
-            arLink: "https://mywebar.com/p/Project_6_g4ptzslge",
-            badge: "Try AR"
-        },
-         {
-            id: 7,
-            title: "VISTA SQUARE RISERS",
-            subtitle: "Colección digital",
-            imgSrc: "Captura de pantalla 2026-05-12 120437.png",
-            arLink: "https://mywebar.com/p/Project_6_g4ptzslge",
-            badge: "Try AR"
+            title: "Vista Rectangular Riser-Mocha",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28600-6-140-600x450.jpg",
+            arLink: "https://webxr.run/xyGR3RkL8ZElo",
+            badge: "TvA"
         },
         {
-            id: 8,
-            title: "3 VASOS ",
-            subtitle: "Colección digital",
-            imgSrc: "Captura de pantalla 2026-05-12 124917.png",
-            arLink: "https://mywebar.com/p/Project_7_rldvz1ubim",
-            badge: "Try AR"
+            id: 6,
+            title: "Vista Square Riser-Coastal",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28601-6-141-600x450.jpg",
+            arLink: "https://webxr.run/MpY9vOM77Y08p",
+            badge: "TvA"
         },
-         {
-            id: 9,
-            title: "3 VASOS ",
-            subtitle: "Colección digital",
-            imgSrc: "Captura de pantalla 2026-05-12 124917.png",
-            arLink: "https://mywebar.com/p/Project_7_rldvz1ubim",
-            badge: "Try AR"
+        {
+            id: 7,
+            title: "Vista 16oz Jar Display-Mocha",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28604-4-140-600x450.jpg",
+            arLink: "https://webxr.run/YymXZko520233",
+            badge: "TvA"
         },
-         {
-            id: 10,
-            title: "PLATO ",
-            subtitle: "Colección digital",
-            imgSrc: "24126-9-102.PNG",
-            arLink: "https://mywebar.com/p/Project_8_i2nxg6hian",
-            badge: "Try AR"
-        },
-
-
         
-        // 👇 PARA AGREGAR MÁS PRODUCTOS, COPIA EL BLOQUE DE ARRIBA (desde { hasta }), 
-        // PON UNA COMA AL FINAL DEL PRODUCTO ANTERIOR Y PEGA AQUÍ ABAJO.
-        // EJEMPLO:
-        // ,{
-        //     id: 5,
-        //     title: "Mi producto nuevo",
-        //     subtitle: "Descripción breve",
-        //     imgSrc: "ruta/de/mi/imagen.jpg",
-        //     arLink: "https://mienlacear.com",
-        //     badge: "Ver AR"
-        // }
+        {
+            id: 9,
+            title: "Vista 9-Section Condiment Organizer-Coastal",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28610-141-600x450.jpg",
+            arLink: "https://webxr.run/mPADmXv89xn5X",
+            badge: "TvA"
+        },
+        {
+            id: 10,
+            title: "Vista 3 Jar Display-Coastal",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28616-141-600x450.jpg",
+            arLink: "https://webxr.run/xvVWRNObM45Vm",
+            badge: "TvA"
+        },
+        {
+            id: 11,
+            title: "Vista 3 Section Flatware Organizer-Mocha",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28617-140-1024x768.jpg",
+            arLink: "https://webxr.run/ZnMmrxp7Xm8k6",
+            badge: "TvA"
+        },
+        {
+            id: 12,
+            title: "Vista Chafer-Mocha",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28620-140-600x450.jpg",
+            arLink: "https://webxr.run/7OOXyA5pyNmN",
+            badge: "TvA"
+        },
+        {
+            id: 13,
+            title: "Unidad de inducción Vista - Mocha",
+            subtitle: "Colección digital 2026",
+            imgSrc: "28621-140A-1024x768.jpg",
+            arLink: "https://webxr.run/VWA1pko22xbpG",
+            badge: "TvA"
+        }
     ];
 
-    // ========== NO MODIFICAR NADA DEBAJO A MENOS QUE SEPAS ==========
-    
     function renderCatalog(productsArray) {
         const gridContainer = document.getElementById('productGrid');
         if (!gridContainer) return;
@@ -500,7 +491,6 @@
         setTimeout(() => toast.remove(), 2000);
     }
 
-    // Tema claro/oscuro
     function initTheme() {
         const saved = localStorage.getItem('appleTheme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -514,7 +504,6 @@
     }
     function toggleTheme() { applyTheme(!document.body.classList.contains('dark')); }
 
-    // Guardar/editar productos en localStorage
     function saveProducts() { localStorage.setItem('arCatalog', JSON.stringify(productsData)); }
     function loadProducts() {
         const stored = localStorage.getItem('arCatalog');
@@ -543,7 +532,6 @@
         initTheme();
         document.getElementById('themeToggleBtn')?.addEventListener('click', toggleTheme);
         
-        // Soporte para logo: si la imagen no carga, mostrar placeholder
         const logoImg = document.getElementById('companyLogoImg');
         if(logoImg) {
             logoImg.onerror = function() { this.style.display = 'none'; };
